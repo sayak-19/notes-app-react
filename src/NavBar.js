@@ -45,8 +45,35 @@ function NavBar() {
                   My Notes
                 </li>
               </Link>
+              <Link to="/create-note">
+                <li
+                  className={` py-2 cursor-pointer  hover:text-slate-300 ${
+                    pathName === "/create-note" ? "font-semibold " : ""
+                  } `}
+                >
+                  Create Note
+                </li>
+              </Link>
             </>
           )}
+          <Link to="/contacts">
+            <li
+              className={`${
+                pathName === "/contact" ? "font-semibold " : ""
+              } py-2 cursor-pointer hover:text-slate-300`}
+            >
+              Contact
+            </li>
+          </Link>
+          <Link to="/about">
+            <li
+              className={`py-2 cursor-pointer hover:text-slate-300 ${
+                pathName === "/about" ? "font-semibold " : ""
+              }`}
+            >
+              About
+            </li>
+          </Link>
         </ul>
       </nav>
     </header>
