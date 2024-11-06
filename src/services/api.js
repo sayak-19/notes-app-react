@@ -18,7 +18,7 @@ api.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
     let csrfToken = localStorage.getItem("CSRF");
-    if (!csrfToken) {
+    if (true) {
       try {
         const resp = await axios.get(
           `${process.env.REACT_APP_API_URL}/api/csrf-token`,
@@ -33,7 +33,7 @@ api.interceptors.request.use(
     if (csrfToken) {
       config.headers["X-XSRF-TOKEN"] = csrfToken;
     }
-    console.log("X-XSRF-TOKEN" + csrfToken);
+    //console.log("X-XSRF-TOKEN" + csrfToken);
     return config;
   },
   (error) => {

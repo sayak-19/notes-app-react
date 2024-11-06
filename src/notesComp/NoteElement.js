@@ -5,16 +5,27 @@ import { IconButton } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import { MdRemoveRedEye } from "react-icons/md";
 
-const NoteElement = ({ content, id, createdAt }) => {
+const NoteElement = ({ parsedContent, id, createdAt }) => {
+  const date = new Date(createdAt);
+  const formattedDt = date.toLocaleDateString("en-US", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric",
+  });
+  const formattedTime = date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
   return (
     <div className="sm:px-5 px-2 py-5 shadow-md bg-noteColor shadow-white rounded-lg min-h-96 max-h-96 relative overflow-hidden">
       <p
         className="text-black font-customWeight ql-editor"
-        dangerouslySetInnerHTML={{ __html: truncateText(content) }}
+        dangerouslySetInnerHTML={{ __html: truncateText(parsedContent) }}
       ></p>
       <div className="flex justify-between items-center  absolute bottom-5 sm:px-5 px-2 left-0 w-full text-slate-700">
-        <span>{"10/10/2024"}</span>
-        <Link to={`/note/${id}`}>
+        <span>{`${formattedDt}, ${formattedTime}`}</span>
+        <Link to={`/notes/${id}`}>
           {" "}
           <Tooltip title="View Note">
             <IconButton>

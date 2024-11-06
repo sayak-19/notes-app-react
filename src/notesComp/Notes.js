@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FiFilePlus } from "react-icons/fi";
 import api from "../services/api";
 import NoteElement from "./NoteElement";
+import Errors from "../utils/Errors";
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
@@ -14,12 +15,10 @@ const Notes = () => {
     setLoading(true);
     try {
       const resp = await api.get("/notes");
-      const parsedNotes = resp.data.map((note) => {
-        console.log(note);
-        return {
-          ...note,
-        };
-      });
+      const parsedNotes = resp.data.map((note) => ({
+        ...note,
+        parsedContent: JSON.parse(note.content).content,
+      }));
       setNotes(parsedNotes);
     } catch (e) {
       setError(e.resp.data.message);
@@ -34,11 +33,7 @@ const Notes = () => {
   }, []);
 
   if (error) {
-    return (
-      <div className="text-2xl font-bold text-gray-800 mb-4">
-        Oops! Something went wrong.
-      </div>
-    );
+    return <Errors message={error} />;
   }
 
   return (

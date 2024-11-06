@@ -17,7 +17,7 @@ const LandingPage = () => {
   const { token } = useAppContext();
 
   return (
-    <div className="min-h-[calc(100vh-74px)] flex justify-content">
+    <div className="min-h-[calc(100vh-74px)] flex justify-center">
       <div className="lg:w-[80%] w-full py-16 space-y-4">
         <h3 className="text-logoText md:text-2xl text-xl font-semibold text-slate-800 text-center ">
           <motion.h1
