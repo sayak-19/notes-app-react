@@ -12,7 +12,7 @@ function NavBar() {
 
   const handleLogout = () => {
     localStorage.removeItem("JWT");
-    localStorage.removeItem("CSRF");
+    //localStorage.removeItem("CSRF");
     localStorage.removeItem("USER");
     localStorage.removeItem("IS_ADMIN");
     setToken(null);
@@ -54,6 +54,17 @@ function NavBar() {
                   Create Note
                 </li>
               </Link>
+              {isAdmin && (
+                <Link to="/admin">
+                  <li
+                    className={` py-2 cursor-pointer  hover:text-slate-300 ${
+                      pathName === "/admin" ? "font-semibold " : ""
+                    } `}
+                  >
+                    Admin
+                  </li>
+                </Link>
+              )}
             </>
           )}
           <Link to="/contacts">
@@ -74,6 +85,14 @@ function NavBar() {
               About
             </li>
           </Link>
+          {token && (
+            <button
+              onClick={handleLogout}
+              className="w-24 text-center bg-customRed font-semibold px-4 py-2 rounded-sm cursor-pointer hover:text-slate-300"
+            >
+              LogOut
+            </button>
+          )}
         </ul>
       </nav>
     </header>

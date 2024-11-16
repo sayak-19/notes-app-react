@@ -7,6 +7,7 @@ import { jwtDecode } from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import InputField from "../utils/InputField";
 import Button from "../utils/Button";
+import axios from "axios";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
@@ -108,7 +109,15 @@ const LoginPage = () => {
         >
           {loading ? <span>Loading...</span> : "LogIn"}
         </Button>
-        <p className="text-center text-sm text-slate-700 mt-600">
+        <p className="text-left text-sm text-slate-700">
+          <Link
+            to="/forgot-password"
+            className="font-semibold underline hover:text-black"
+          >
+            Forgot Password?
+          </Link>
+        </p>
+        <p className="text-center text-sm text-slate-700 mt-6">
           Don't have an account?{" "}
           <Link
             to="/signup"

@@ -107,6 +107,7 @@ const SignupPage = () => {
             placeholder="Enter your password"
             register={register}
             errors={errors}
+            min={6}
           ></InputField>
         </div>
         <Button

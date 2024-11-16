@@ -11,6 +11,9 @@ import ProtectedRoute from "./authComp/ProtectedRoute";
 import NoteDetails from "./notesComp/NoteDetails";
 import CreateNote from "./notesComp/CreateNote";
 import ContactPage from "./ContactPage";
+import Admin from "./AdminComp/Admin";
+import ForgotPassword from "./authComp/ForgotPassword";
+import ResetPassword from "./authComp/ResetPassword";
 
 function App() {
   return (
@@ -44,9 +47,19 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/admin/*"
+          element={
+            <ProtectedRoute adminPage={true}>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contacts" element={<ContactPage />} />
         <Route path="/access-denied" element={<AccessDenied />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </Router>
   );
