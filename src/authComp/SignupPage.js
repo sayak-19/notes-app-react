@@ -6,6 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppContext } from "../store/ContextApi";
 import api from "../services/api";
 import toast from "react-hot-toast";
+import { Divider } from "@mui/material";
+import { FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const SignupPage = () => {
   const [loading, setLoading] = useState(false);
@@ -76,6 +81,33 @@ const SignupPage = () => {
           <p className="text-slate-600 text-center">
             Enter your credentials to create new account
           </p>
+          <div className="flex items-center justify-between gap-1 py-5">
+            <Link
+              to={`${apiUrl}/oauth2/authorization/google`}
+              className="flex gap-1 items-center justify-center flex-1 border p-2 shadow-sm shadow-slate-200 rounded-md hover:bg-slate-300 transition-all duration-300"
+            >
+              <span>
+                <FcGoogle className="text-2xl" />
+              </span>
+              <span className="font-semibold sm:text-customText text-xs">
+                Login With Google
+              </span>
+            </Link>
+          </div>
+          <div className="flex items-center justify-between gap-1 py-5">
+            <Link
+              to={`${apiUrl}/oauth2/authorization/github`}
+              className="flex gap-1 items-center justify-center flex-1 border p-2 shadow-sm shadow-slate-200 rounded-md hover:bg-slate-300 transition-all duration-300"
+            >
+              <span>
+                <FaGithub className="text-2xl" />
+              </span>
+              <span className="font-semibold sm:text-customText text-xs">
+                Login With Github
+              </span>
+            </Link>
+          </div>
+          <Divider className="font-semibold">OR</Divider>
         </div>
         <div className="flex flex-col gap-2">
           <InputField

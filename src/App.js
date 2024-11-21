@@ -14,6 +14,7 @@ import ContactPage from "./ContactPage";
 import Admin from "./AdminComp/Admin";
 import ForgotPassword from "./authComp/ForgotPassword";
 import ResetPassword from "./authComp/ResetPassword";
+import OAuth2Redirect from "./authComp/OAuth2Redirect";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
         <Route path="/access-denied" element={<AccessDenied />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/oauth2/redirect" element={<OAuth2Redirect />} />
       </Routes>
     </Router>
   );
